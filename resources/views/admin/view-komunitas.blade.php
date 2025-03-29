@@ -4,135 +4,112 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <title>Ecozyne | Data Komunitas</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/ecozyne.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
 </head>
 
 <body>
-
-  @include('components.loader') <!-- Panggil Loader -->
-
-  <x-sidebar-admin /> <!-- Panggil Sidebar -->
-
-    <!--  Main wrapper -->
-    <div class="body-wrapper">
-    
-  <!--  Header Start -->
-  <header class="app-header shadow">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <ul class="navbar-nav">
-        <li class="nav-item d-block d-xl-none">
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-            <i class="ti ti-bell-ringing"></i>
-            <div class="notification bg-primary rounded-circle"></div>
-          </a>
-        </li>
-      </ul>
-      <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-            </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-              <div class="message-body">
-                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                  <i class="ti ti-user fs-6"></i>
-                  <p class="mb-0 fs-3">My Profile</p>
-                </a>
-                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                  <i class="ti ti-mail fs-6"></i>
-                  <p class="mb-0 fs-3">My Account</p>
-                </a>
-                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                  <i class="ti ti-list-check fs-6"></i>
-                  <p class="mb-0 fs-3">My Task</p>
-                </a>
-                <a href="./authentication-login.html" class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!--  Header End -->
-     
-      <div class="container-fluid">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">Data Komunitas</h5>
-            <hr>
-            <div class="table-responsive">
-              <table class="table text-nowrap mb-0 align-middle">
-                <thead class="text-dark fs-4">
-                  <tr>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Id</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Nama Pengguna</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Email</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">No Telp</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Aksi</h6>
-                    </th>
-                  </tr>
-                </thead>
-                
-                <tbody>
-
-                  @foreach ( $komunitas as $data_pengguna )
-                  
-                  <tr>
-                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6></td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{ $data_pengguna->user->username }}</p>
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{ $data_pengguna->user->email }}</p>
-                    </td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{ $data_pengguna->no_telp }}</p>
-
-                    </td>
-                    <td class="border-bottom-0">
-                      <div class="d-flex align-items-center gap-2">
-                          <button class="btn btn-primary fw-normal rounded-2" onclick="window.location.href='view-komunitas'">
-                              <i class="fa fa-eye"></i>
-                          </button>
-                      </div>
-                  </td>                      
-                    </td>
-                  </tr> 
-                  @endforeach
-             
-                </tbody>
-              </table>
-            </div>
+  @include('components.loader')
+  <x-sidebar-admin />
+  <div class="body-wrapper">
+    @include('components.header')
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold mb-4">Data Komunitas</h5>
+          <hr>
+          <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Cari Komunitas...">
           </div>
+          <hr>
+          <div class="table-responsive">
+            <table class="table text-nowrap mb-0 align-middle" id="dataTable">
+              <thead class="text-dark fs-4">
+                <tr>
+                  <th class="border-bottom-0">Id</th>
+                  <th class="border-bottom-0">Nama Pengguna</th>
+                  <th class="border-bottom-0">Email</th>
+                  <th class="border-bottom-0">No Telp</th>
+                  <th class="border-bottom-0">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($komunitas as $data_pengguna)
+                <tr>
+                  <td class="border-bottom-0">{{ $loop->iteration }}</td>
+                  <td class="border-bottom-0 nama-pengguna">{{ $data_pengguna->user->username }}</td>
+                  <td class="border-bottom-0">{{ $data_pengguna->user->email }}</td>
+                  <td class="border-bottom-0">{{ $data_pengguna->no_telp }}</td>
+                  <td class="border-bottom-0">
+                    <div class="d-flex align-items-center gap-2">
+                      <button class="btn btn-primary fw-normal rounded-2" onclick="window.location.href='view-komunitas'">
+                        <i class="fa fa-eye"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between mt-3">
+            <button id="prevPage" class="btn btn-secondary">Sebelumnya</button>
+            <span id="pageInfo" class="align-self-center"></span>
+            <button id="nextPage" class="btn btn-secondary">Selanjutnya</button>
+          </div>
+          <hr>
         </div>
+        <hr>
       </div>
-      
     </div>
   </div>
-
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/sidebarmenu.js"></script>
   <script src="../assets/js/app.min.js"></script>
   <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let rowsPerPage = 10;
+      let table = document.querySelector('#dataTable tbody');
+      let rows = Array.from(table.querySelectorAll('tr'));
+      let currentPage = 1;
+      let totalPages = Math.ceil(rows.length / rowsPerPage);
+
+      function displayRows() {
+        rows.forEach((row, index) => {
+          row.style.display = (index >= (currentPage - 1) * rowsPerPage && index < currentPage * rowsPerPage) ? '' : 'none';
+        });
+        document.getElementById('pageInfo').textContent = `Halaman ${currentPage} dari ${totalPages}`;
+      }
+
+      document.getElementById('prevPage').addEventListener('click', function () {
+        if (currentPage > 1) {
+          currentPage--;
+          displayRows();
+        }
+      });
+
+      document.getElementById('nextPage').addEventListener('click', function () {
+        if (currentPage < totalPages) {
+          currentPage++;
+          displayRows();
+        }
+      });
+
+      document.getElementById('searchInput').addEventListener('keyup', function () {
+        let filter = this.value.toLowerCase();
+        rows.forEach(row => {
+          let text = row.textContent.toLowerCase();
+          row.style.display = text.includes(filter) ? '' : 'none';
+        });
+      });
+      displayRows();
+    });
+  </script>
 </body>
 
 </html>

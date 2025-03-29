@@ -1,11 +1,17 @@
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
 <!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <title>Ecozyne | Portal Masuk</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/ecozyne.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
@@ -13,6 +19,10 @@
 
 
 <body>
+
+  @include('components.loader') <!-- Panggil Loader -->
+
+
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -23,15 +33,17 @@
           <div class="col-md-10 col-lg-8 col-xl-5">
             <div class="card mb-0">
               <div class="card-body">
-                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                <a href="login" class="text-nowrap logo-img text-center d-block py-3 w-100">
                   <img src="../assets/images/logos/ecozyne.png" width="60" alt="" />
                   <span class="ms-1 fw-bolder  text-dark fs-8">Ecozyne</span>
                 </a>
                 <hr>
-                <form>
+                
+                <form action="{{ route('login-post') }}" method="POST">
+                  @csrf                  
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Nama Pengguna</label>
-                    <input type="text" class="form-control" name="username" id="namaPengguna" aria-describedby="UsernameHelp">
+                    <input type="text" class="form-control" name="username" id="namaPengguna" placeholder="Masukkan Nama Pengguna" aria-describedby="UsernameHelp">
                   </div>
                   <div class="mb-3">
                     <label for="kataSandi" class="form-label">Kata Sandi</label>
@@ -64,7 +76,7 @@
                   
                     <a class="text-primary fw-bold" href="index">Lupa Kata Sandi ?</a>
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Masuk</a>
+                  <button type="submit" class="btn btn-primary w-100">Masuk</button>
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Belum Punya Akun ?</p>
                     <a class="text-primary fw-bold ms-2" href="register">Buat Akun</a>

@@ -7,7 +7,6 @@ use App\Http\Controllers\KomunitasController;
 
 // login
 
-
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
         return view('login');
@@ -34,8 +33,11 @@ Route::get('/register', function () {
     return view('/register');
 });
 
+
 // fungsi Registrasi
 Route::post('/register-post', [UserController::class, 'register']);
+
+
 
 
 // Dashboard
@@ -47,6 +49,7 @@ Route::get('/dashboard/index', function () {
 Route::get('/dashboard/form', function () {
     return view('/dashboard/form');
 });
+
 
 
 

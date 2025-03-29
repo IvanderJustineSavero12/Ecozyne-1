@@ -78,13 +78,14 @@
          </li>
          
          <li class="sidebar-item">
-            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-              <span>
-                <i class="ti ti-user"></i>
-              </span>
-              <span class="hide-menu">Kelola Komunitas</span>
-              <span class="dropdown-icon">▾</span> 
-            </a>
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false" 
+            style="display: flex; justify-content: space-between; align-items: center; padding-right: 10px;">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Kelola Komunitas</span>
+                <span class="dropdown-icon" style="margin-left: auto;">▾</span> 
+              </a>
             <ul class="collapse first-level bg-custom shadow-custom rounded p-2">
                 <li class="sidebar-item">
                 <a href="./add-komunitas" class="sidebar-link">
@@ -100,13 +101,14 @@
           </li>
 
           <li class="sidebar-item">
-            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-              <span>
-                <i class="ti ti-home"></i>
-              </span>
-              <span class="hide-menu">Kelola Bank Sampah</span>
-              <span class="dropdown-icon">▾</span> 
-            </a>
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false" 
+            style="display: flex; justify-content: space-between; align-items: center; padding-right: 10px;">
+                <span>
+                  <i class="ti ti-home"></i>
+                </span>
+                <span class="hide-menu">Kelola Bank Sampah</span>
+                <span class="dropdown-icon" style="margin-left: auto;">▾</span> 
+              </a>
             <ul class="collapse first-level bg-custom shadow-custom rounded p-2">
                 <li class="sidebar-item">
                 <a href="./tambah-pengguna.html" class="sidebar-link">
@@ -127,21 +129,22 @@
           </li>
 
           <li class="sidebar-item">
-            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-              <span>
-                <i class="ti ti-article"></i>
-              </span>
-              <span class="hide-menu">Kelola Artikel</span>
-              <span class="dropdown-icon">▾</span> 
-            </a>
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false" 
+            style="display: flex; justify-content: space-between; align-items: center; padding-right: 10px;">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Kelola Artikel</span>
+                <span class="dropdown-icon" style="margin-left: auto;">▾</span> 
+              </a>
             <ul class="collapse first-level bg-custom shadow-custom rounded p-2">
                 <li class="sidebar-item">
-                <a href="./tambah-pengguna.html" class="sidebar-link">
+                <a href="./add-artikel" class="sidebar-link">
                   <span class="hide-menu">Tambah Artikel</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a href="./daftar-pengguna.html" class="sidebar-link">
+                <a href="./view-artikel" class="sidebar-link">
                   <span class="hide-menu">Data Artikel</span>
                 </a>
               </li>
@@ -149,13 +152,14 @@
           </li>
 
           <li class="sidebar-item">
-            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-              <span>
-                <i class="ti ti-pin"></i>
-              </span>
-              <span class="hide-menu">Kelola Kegitan</span>
-              <span class="dropdown-icon">▾</span> 
-            </a>
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false" 
+            style="display: flex; justify-content: space-between; align-items: center; padding-right: 10px;">
+                <span>
+                  <i class="ti ti-pin"></i>
+                </span>
+                <span class="hide-menu">Kelola Kegiatan</span>
+                <span class="dropdown-icon" style="margin-left: auto;">▾</span> 
+              </a>
             <ul class="collapse first-level bg-custom shadow-custom rounded p-2">
                 <li class="sidebar-item">
                 <a href="./tambah-pengguna.html" class="sidebar-link">
@@ -171,21 +175,22 @@
           </li>
 
           <li class="sidebar-item">
-            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-              <span>
-                <i class="ti ti-gift"></i>
-              </span>
-              <span class="hide-menu">Kelola Hadiah</span>
-              <span class="dropdown-icon">▾</span> 
-            </a>
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false"
+             style="display: flex; justify-content: space-between; align-items: center; padding-right: 10px;">
+                <span>
+                  <i class="ti ti-gift"></i>
+                </span>
+                <span class="hide-menu">Kelola Hadiah</span>
+                <span class="dropdown-icon" style="margin-left: auto;">▾</span> 
+              </a>
             <ul class="collapse first-level bg-custom shadow-custom rounded p-2">
                 <li class="sidebar-item">
-                <a href="./tambah-pengguna.html" class="sidebar-link">
+                <a href="./add-hadiah" class="sidebar-link">
                   <span class="hide-menu">Tambah Hadiah</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a href="./daftar-pengguna.html" class="sidebar-link">
+                <a href="./view-hadiah" class="sidebar-link">
                   <span class="hide-menu">Data Hadiah</span>
                 </a>
               </li>

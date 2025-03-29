@@ -54,21 +54,55 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Registrasi berhasil!');
     }
 
+    public function login(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::where('username', $request->username)->first();
+
+        if ($user && Hash::check($request->password, $user->password)) {
+            session(['user_id' => $user->id, 'role' => $user->role]);
+
+            switch ($user->role) {
+                case 'admin':
+                    return redirect('/admin/index');
+                case 'komunitas':
+                    return redirect('index' . $user->id);
+                default:
+                    return redirect('/login')->with('error', 'Role tidak dikenali.');
+            }
+        }
+
+        return back()->with('error', 'Username atau password salah!');
+    }
+
+    public function logout()
+    {
+        session()->flush();
+        return redirect('/login');
+    }
+
+    
     public function data_pengguna()
     {
        
-        $komunitas = komunitas::all();
- 
+        $komunitas = Komunitas::whereHas('user', function ($query) {
+            $query->where('role', 'komunitas');
+        })->get();
+     
         return view('/admin/index', compact('komunitas')); 
     }
-
+    
     public function data_komunitas()
     {
-       
-        $komunitas = komunitas::all();
- 
+        // Ambil hanya pengguna yang memiliki role 'komunitas'
+        $komunitas = Komunitas::whereHas('user', function ($query) {
+            $query->where('role', 'komunitas');
+        })->get();
+    
         return view('/admin/view-komunitas', compact('komunitas')); 
     }
-
-
 }
